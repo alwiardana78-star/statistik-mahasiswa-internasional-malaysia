@@ -1,1 +1,1 @@
-# statistik-mahasiswa-internasional-malaysia
+# statistik-mahasiswa
