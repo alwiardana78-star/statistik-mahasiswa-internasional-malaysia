@@ -1,0 +1,423 @@
+<!-- 
+PALETTE NAME: Vibrant & Playful (Magenta, Cyan, Yellow, Purple, Mint)
+CONFIRMATION: I explicitly confirm that NEITHER Mermaid JS NOR SVG were used anywhere in the output. All visualizations are rendered using HTML5 Canvas via Chart.js, and all iconography relies on standard Unicode characters.
+NARRATIVE PLAN: 
+1. Introduction: Establishes Malaysia's position as a global education hub and introduces the timeline (2020-2025).
+2. Trend Analysis (2020-2025): Visualizes the impact of the pandemic and the subsequent recovery and growth in international student enrollments.
+3. Global Diversity & Demographics: Breaks down the 160+ country origins, highlighting the top contributing nations and their specific percentages.
+4. Growth Dynamics of Key Nations: Analyzes how the enrollment numbers from the top three source countries (China, Indonesia, Bangladesh) have shifted over the 5-year period.
+5. Regional Distribution: Groups the data into broader geographical regions to show Malaysia's global reach.
+CHART SELECTION JUSTIFICATION:
+- Data Point: Total Students 2020-2025 -> Goal: Change -> Chosen: Line Chart (Chart.js) -> Justification: Best for showing continuous trends over time. (NO SVG)
+- Data Point: Top 10 Countries Percentage -> Goal: Compare/Organize -> Chosen: Horizontal Bar Chart (Chart.js) -> Justification: Allows for easy reading of long country names and direct comparison of sizes. (NO SVG)
+- Data Point: Top 5 Countries Market Share -> Goal: Compare (Composition) -> Chosen: Donut Chart (Chart.js) -> Justification: Clearly shows the dominant share of the top few countries against the rest. (NO SVG)
+- Data Point: Yearly Growth of Top 3 -> Goal: Change/Compare -> Chosen: Stacked Bar Chart (Chart.js) -> Justification: Shows both total growth and the changing composition of the main contributors simultaneously. (NO SVG)
+- Data Point: Regional Distribution -> Goal: Organize/Relationships -> Chosen: Polar Area Chart (Chart.js) -> Justification: Effective for showing cyclical or regional categorical data with varying magnitudes in a compact space. (NO SVG)
+-->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinamika Mahasiswa Internasional di Malaysia (2020-2025)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .vibrant-gradient {
+            background: linear-gradient(135deg, #FF3366 0%, #9933FF 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+    </style>
+</head>
+<body class="antialiased pb-20">
+
+    <header class="vibrant-gradient text-white py-16 px-4 md:px-8 mb-10 shadow-lg">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">Dinamika Mahasiswa Internasional di Malaysia</h1>
+            <p class="text-xl md:text-2xl font-medium opacity-90 max-w-3xl">Analisis Komprehensif Tren, Demografi, dan Proyeksi Pertumbuhan Populasi Mahasiswa Asing (2020 - 2025)</p>
+            <div class="mt-8 flex flex-wrap gap-4">
+                <span class="bg-white text-[#FF3366] px-4 py-2 rounded-full font-bold text-sm shadow-sm">&#127891; 160+ Negara Asal</span>
+                <span class="bg-white text-[#9933FF] px-4 py-2 rounded-full font-bold text-sm shadow-sm">&#128200; Proyeksi 155.000+ Mahasiswa</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 md:px-8 space-y-12">
+
+        <section class="bg-white rounded-2xl p-6 md:p-8 card-shadow border border-slate-100">
+            <div class="mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4 border-b-4 border-[#33CCFF] inline-block pb-2">1. Ikhtisar & Tren Pendaftaran (2020-2025)</h2>
+                <p class="text-slate-600 leading-relaxed text-lg">
+                    Malaysia telah memantapkan dirinya sebagai pusat pendidikan tinggi terkemuka di Asia Tenggara. Meskipun menghadapi tantangan mobilitas global pada tahun 2020 akibat pandemi, sektor ini menunjukkan resiliensi yang luar biasa. Pemulihan dimulai pada 2021, diikuti oleh lonjakan signifikan pada 2023 dan 2024. Data memproyeksikan tren pertumbuhan yang berkelanjutan hingga tahun 2025, mencerminkan kepercayaan internasional terhadap kualitas dan keterjangkauan pendidikan di Malaysia.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <div class="lg:col-span-1 space-y-6">
+                    <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-[#FF3366]">
+                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider">Total Mahasiswa (2020)</h3>
+                        <p class="text-4xl font-extrabold text-[#FF3366]">98.000</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-[#00FF99]">
+                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider">Proyeksi (2025)</h3>
+                        <p class="text-4xl font-extrabold text-[#00FF99]">155.000</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-[#33CCFF]">
+                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider">Pertumbuhan Keseluruhan</h3>
+                        <p class="text-4xl font-extrabold text-[#33CCFF]">+58.1%</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-2">
+                    <div class="mb-4 text-center text-sm font-semibold text-slate-500">
+                        Visualisasi: Grafik Garis Tren Total Populasi Mahasiswa Internasional
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-4 text-center">
+                        Grafik di atas mengilustrasikan lintasan pertumbuhan yang stabil setelah tahun 2020. Lonjakan tajam antara 2022 dan 2024 menunjukkan pembukaan kembali perbatasan secara penuh dan agresifnya promosi pendidikan Malaysia di luar negeri.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-2xl p-6 md:p-8 card-shadow border border-slate-100">
+            <div class="mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4 border-b-4 border-[#FFCC00] inline-block pb-2">2. Demografi Negara Asal (Komposisi 2024)</h2>
+                <p class="text-slate-600 leading-relaxed text-lg">
+                    Saat ini, Malaysia menampung mahasiswa dari lebih dari 160 negara. Namun, distribusi ini sangat terkonsentrasi. Republik Rakyat Tiongkok mendominasi lanskap demografis, diikuti oleh negara tetangga Indonesia dan negara-negara Asia Selatan. Analisis persentase ini penting untuk memahami pasar utama perguruan tinggi Malaysia.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="mb-4 text-center text-sm font-semibold text-slate-500">
+                        Visualisasi: Pangsa Pasar 5 Negara Teratas vs Lainnya
+                    </div>
+                    <div class="chart-container" style="max-width: 500px;">
+                        <canvas id="donutChart"></canvas>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-4 text-center">
+                        Diagram donat menyoroti bahwa lima negara teratas menyumbang hampir 70% dari seluruh populasi mahasiswa internasional, menunjukkan ketergantungan pada koridor pasar tertentu.
+                    </p>
+                </div>
+                <div>
+                    <div class="mb-4 text-center text-sm font-semibold text-slate-500">
+                        Visualisasi: Distribusi Persentase 10 Negara Penyumbang Terbesar
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-4 text-center">
+                        Bagan batang horizontal merinci urutan 10 negara teratas. Tiongkok memimpin dengan 35%, berjarak sangat jauh dari Indonesia di posisi kedua dengan 15%. Negara-negara Asia Selatan dan Timur Tengah melengkapi daftar mayoritas.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow border border-slate-100">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-3 border-b-4 border-[#9933FF] inline-block pb-1">3. Pertumbuhan 3 Negara Dominan</h2>
+                    <p class="text-slate-600">
+                        Menganalisis fluktuasi historis dari tiga penyumbang utama: Tiongkok, Indonesia, dan Bangladesh. Sementara Tiongkok menunjukkan pertumbuhan eksponensial yang konstan, Indonesia dan Bangladesh menunjukkan pertumbuhan yang lebih moderat namun stabil sejak pemulihan pasca-pandemi.
+                    </p>
+                </div>
+                <div class="mb-2 text-center text-sm font-semibold text-slate-500">
+                    Visualisasi: Komposisi Absolut Berdasarkan Tahun (Top 3 vs Lainnya)
+                </div>
+                <div class="chart-container">
+                    <canvas id="stackedBarChart"></canvas>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 text-center">
+                    Bagan batang bertumpuk ini memperlihatkan bagaimana volume mahasiswa dari Tiongkok (merah muda) bertambah secara masif dari tahun ke tahun, secara proporsional mengambil ruang visual yang lebih besar dibandingkan segmen negara lainnya.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow border border-slate-100">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-3 border-b-4 border-[#00FF99] inline-block pb-1">4. Distribusi Regional Global</h2>
+                    <p class="text-slate-600">
+                        Meskipun memiliki mahasiswa dari 160 negara, secara geografis, daya tarik Malaysia sangat kuat di benua Asia. Kedekatan budaya, biaya hidup, dan ketersediaan makanan halal menjadikannya magnet utama bagi mahasiswa Asia Timur, Asia Tenggara, Timur Tengah, dan Afrika.
+                    </p>
+                </div>
+                <div class="mb-2 text-center text-sm font-semibold text-slate-500">
+                    Visualisasi: Estimasi Konsentrasi Berdasarkan Wilayah
+                </div>
+                <div class="chart-container">
+                    <canvas id="polarChart"></canvas>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 text-center">
+                    Bagan Area Polar menunjukkan dominasi absolut kawasan Asia Timur (terutama didorong oleh Tiongkok), disusul oleh Asia Tenggara dan Asia Selatan. Kawasan Afrika dan Timur Tengah membentuk segmen menengah yang stabil.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center mt-12">
+        <p>&#128202; Data divisualisasikan untuk keperluan analisis demografi akademik.</p>
+        <p class="mt-2 text-sm">Dirancang dengan representasi data simulasi terstruktur untuk periode 2020-2025.</p>
+    </footer>
+
+    <script>
+        const wrapText = (text) => {
+            if (text.length <= 16) return text;
+            const words = text.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > 16) {
+                    if (currentLine) lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const globalTooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const colors = {
+            magenta: '#FF3366',
+            cyan: '#33CCFF',
+            yellow: '#FFCC00',
+            purple: '#9933FF',
+            mint: '#00FF99',
+            slate: '#94A3B8',
+            dark: '#1E293B'
+        };
+
+        const years = ['2020', '2021', '2022', '2023', '2024', '2025 (Est)'];
+        const totalStudents = [98000, 105000, 115000, 130000, 145000, 155000];
+
+        const ctxTrend = document.getElementById('trendChart').getContext('2d');
+        new Chart(ctxTrend, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [{
+                    label: 'Total Mahasiswa Internasional',
+                    data: totalStudents,
+                    borderColor: colors.magenta,
+                    backgroundColor: 'rgba(255, 51, 102, 0.1)',
+                    borderWidth: 4,
+                    pointBackgroundColor: colors.cyan,
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: globalTooltipConfig,
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: { borderDash: [5, 5], color: '#E2E8F0' },
+                        ticks: { color: colors.dark, font: { family: "'Plus Jakarta Sans', sans-serif" } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: colors.dark, font: { family: "'Plus Jakarta Sans', sans-serif", weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        const rawCountries = [
+            'Republik Rakyat Tiongkok', 
+            'Republik Indonesia', 
+            'Republik Rakyat Bangladesh', 
+            'Republik India', 
+            'Republik Federal Nigeria', 
+            'Republik Islam Pakistan', 
+            'Republik Yaman', 
+            'Republik Sosialis Demokratik Sri Lanka', 
+            'Republik Arab Mesir', 
+            '150+ Negara Lainnya'
+        ];
+        const wrappedCountries = rawCountries.map(wrapText);
+        const countryPercentages = [35, 15, 10, 8, 5, 4, 3, 2, 2, 16];
+
+        const ctxBar = document.getElementById('barChart').getContext('2d');
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: wrappedCountries,
+                datasets: [{
+                    label: 'Persentase Mahasiswa (%)',
+                    data: countryPercentages,
+                    backgroundColor: [
+                        colors.magenta, colors.cyan, colors.yellow, colors.purple, colors.mint,
+                        '#F87171', '#60A5FA', '#FBBF24', '#A78BFA', colors.slate
+                    ],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: globalTooltipConfig,
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 40,
+                        grid: { borderDash: [5, 5], color: '#E2E8F0' },
+                        ticks: { callback: function(value) { return value + "%" }, color: colors.dark }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { color: colors.dark, font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 } }
+                    }
+                }
+            }
+        });
+
+        const donutLabels = ['Tiongkok', 'Indonesia', 'Bangladesh', 'India', 'Nigeria', 'Lainnya'].map(wrapText);
+        const donutData = [35, 15, 10, 8, 5, 27];
+        
+        const ctxDonut = document.getElementById('donutChart').getContext('2d');
+        new Chart(ctxDonut, {
+            type: 'doughnut',
+            data: {
+                labels: donutLabels,
+                datasets: [{
+                    data: donutData,
+                    backgroundColor: [colors.magenta, colors.cyan, colors.yellow, colors.purple, colors.mint, colors.slate],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    tooltip: globalTooltipConfig,
+                    legend: {
+                        position: 'right',
+                        labels: { color: colors.dark, font: { family: "'Plus Jakarta Sans', sans-serif" }, usePointStyle: true, padding: 20 }
+                    }
+                }
+            }
+        });
+
+        const dataChina = [32000, 36000, 42000, 48000, 50750, 55000];
+        const dataIndonesia = [14000, 15000, 17000, 19500, 21750, 23000];
+        const dataBangladesh = [9000, 10000, 11500, 13000, 14500, 15500];
+        const dataOthers = [43000, 44000, 44500, 49500, 58000, 61500];
+
+        const ctxStacked = document.getElementById('stackedBarChart').getContext('2d');
+        new Chart(ctxStacked, {
+            type: 'bar',
+            data: {
+                labels: years,
+                datasets: [
+                    { label: 'Tiongkok', data: dataChina, backgroundColor: colors.magenta, borderRadius: {topLeft: 0, topRight: 0, bottomLeft: 4, bottomRight: 4} },
+                    { label: 'Indonesia', data: dataIndonesia, backgroundColor: colors.cyan },
+                    { label: 'Bangladesh', data: dataBangladesh, backgroundColor: colors.yellow },
+                    { label: 'Negara Lainnya', data: dataOthers, backgroundColor: colors.slate, borderRadius: {topLeft: 4, topRight: 4, bottomLeft: 0, bottomRight: 0} }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: globalTooltipConfig,
+                    legend: { position: 'top', labels: { usePointStyle: true, font: { family: "'Plus Jakarta Sans', sans-serif" } } }
+                },
+                scales: {
+                    x: { stacked: true, grid: { display: false }, ticks: { color: colors.dark, font: { weight: 'bold' } } },
+                    y: { stacked: true, grid: { borderDash: [5, 5], color: '#E2E8F0' }, ticks: { color: colors.dark } }
+                }
+            }
+        });
+
+        const polarLabels = ['Asia Timur', 'Asia Tenggara', 'Asia Selatan', 'Timur Tengah', 'Afrika', 'Eropa & Amerika'].map(wrapText);
+        const polarData = [38, 20, 22, 10, 8, 2];
+        
+        const ctxPolar = document.getElementById('polarChart').getContext('2d');
+        new Chart(ctxPolar, {
+            type: 'polarArea',
+            data: {
+                labels: polarLabels,
+                datasets: [{
+                    data: polarData,
+                    backgroundColor: [
+                        'rgba(255, 51, 102, 0.7)',
+                        'rgba(51, 204, 255, 0.7)',
+                        'rgba(255, 204, 0, 0.7)',
+                        'rgba(153, 51, 255, 0.7)',
+                        'rgba(0, 255, 153, 0.7)',
+                        'rgba(148, 163, 184, 0.7)'
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: globalTooltipConfig,
+                    legend: { position: 'right', labels: { usePointStyle: true, font: { family: "'Plus Jakarta Sans', sans-serif" } } }
+                },
+                scales: {
+                    r: {
+                        ticks: { display: false },
+                        grid: { color: '#E2E8F0' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
